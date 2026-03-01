@@ -44,7 +44,6 @@
         .hidden-site { display: none; }
         .fade-out { opacity: 0; visibility: hidden; transform: translateY(-100%) scale(1.05); }
 
-        /* Reveal Animations */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -56,7 +55,6 @@
             transform: translateY(0);
         }
 
-        /* Floating Background Elements for Hero */
         .hero-float {
             position: absolute;
             width: 200px;
@@ -75,7 +73,6 @@
             to { transform: translate(30px, 50px) rotate(10deg); } 
         }
 
-        /* Branching Timeline */
         .branch-container {
             position: relative;
             max-width: 1000px;
@@ -118,22 +115,13 @@
             z-index: 10;
         }
 
-        /* FIXED: Show full images in story nodes */
-        .story-img-container {
+        /* FIXED: Ensuring images show full content without cutting */
+        .branch-content img {
             width: 100%;
-            aspect-ratio: 16/9;
-            overflow: hidden;
+            height: auto; /* Height adapts to full image content */
+            display: block;
+            object-fit: contain; /* Shows full image */
             border-radius: 12px;
-            background-color: #f8f9fa; /* Light grey background for portrait images */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .story-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain; /* Shows full image without cropping */
         }
 
         .branch-node::after {
@@ -155,7 +143,6 @@
             box-shadow: 0 0 15px rgba(229, 152, 155, 0.4);
         }
 
-        /* Polaroid Gallery Style */
         .polaroid {
             background: white;
             padding: 15px 15px 40px 15px;
@@ -164,21 +151,10 @@
             cursor: pointer;
         }
         
-        /* FIXED: Show full images in polaroids */
-        .polaroid-img-container {
-            width: 100%;
-            aspect-ratio: 1/1;
-            background-color: #f3f4f6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
         .polaroid img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain; /* Ensures photo fits inside the square */
+            width: 100%;
+            height: auto;
+            object-fit: contain;
         }
 
         .polaroid:hover {
@@ -186,7 +162,6 @@
             z-index: 50;
         }
 
-        /* Elusive No Button */
         #btn-no {
             transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
@@ -194,7 +169,6 @@
             will-change: transform;
         }
 
-        /* Final Landing Zone */
         #final-surprise {
             display: none;
             opacity: 0;
@@ -236,14 +210,6 @@
             100% { box-shadow: 0 0 0 0 rgba(229, 152, 155, 0); }
         }
 
-        .contact-btn {
-            transition: all 0.3s ease;
-        }
-        .contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
         @media (max-width: 768px) {
             .main-stem { left: 20px; }
             .branch-node { justify-content: flex-start !important; padding-left: 50px; }
@@ -255,19 +221,16 @@
 </head>
 <body onmousemove="createCursorHeart(event)">
 
-    <!-- Audio Element -->
     <audio id="romantic-music" loop>
         <source src="song.mpeg" type="audio/mpeg">
     </audio>
 
-    <!-- Access Gate -->
     <div id="access-gate">
         <div class="z-10 text-center px-6">
             <div class="text-heart text-6xl mb-8 animate-bounce" style="color: var(--heart)">❤</div>
             <h1 class="font-romantic text-5xl md:text-7xl text-heart mb-6" style="color: var(--heart)">Hello, My Cutie Pooja</h1>
             <p class="font-elegant italic text-gray-500 mb-10 max-w-sm mx-auto">
-                You are only know my name which you always used to call me. 
-                To enter, please type that <strong>nickname</strong> you used to call me.
+                Please type the <strong>nickname</strong> you used to call me.
             </p>
             
             <div class="relative max-w-xs mx-auto">
@@ -285,7 +248,6 @@
         </div>
     </div>
 
-    <!-- Main Content -->
     <div id="main-content" class="hidden-site">
         <div id="heart-container"></div>
 
@@ -300,17 +262,8 @@
             <div class="text-heart animate-pulse text-2xl" style="color: var(--heart)">❤</div>
         </nav>
 
-        <!-- Hero Section -->
         <section id="home" class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-            <div class="hero-float" style="top: 15%; left: 10%; background-image: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=400');"></div>
-            <div class="hero-float" style="top: 60%; left: 5%; background-image: url('https://images.unsplash.com/photo-1516589174184-c684ee393e00?q=80&w=400');"></div>
-            <div class="hero-float" style="top: 10%; right: 8%; background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=400');"></div>
-            <div class="hero-float" style="top: 55%; right: 12%; background-image: url('https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=400');"></div>
-
             <div class="z-10 reveal px-6">
-                <div class="inline-block px-4 py-1 border rounded-full text-[10px] uppercase tracking-[0.4em] mb-8 opacity-70" style="color: var(--heart); border-color: var(--heart)">
-                    A Digital Love Letter for Pooja
-                </div>
                 <h1 class="font-romantic text-7xl md:text-[10rem] text-heart mb-2 leading-none" style="color: var(--heart)">I Miss Us</h1>
                 <p class="font-elegant italic text-xl md:text-4xl text-deep-rose mb-12 tracking-wide" style="color: var(--deep-rose)">Every branch leads back to you, My Chakli.</p>
                 
@@ -319,25 +272,17 @@
                         <span id="days-count" class="block font-romantic text-5xl text-heart" style="color: var(--heart)">0</span>
                         <span class="text-[10px] uppercase tracking-widest text-gray-400">Days of Memories</span>
                     </div>
-                    <div class="w-px h-12 bg-gray-200 hidden md:block"></div>
-                    <div class="max-w-md text-sm md:text-base leading-relaxed text-gray-500 font-light italic text-center">
-                        "I know I can't reach you right now, Pooja, but I needed to build a place for our memories to live. This is my way of keeping the light on for you."
-                    </div>
                 </div>
 
                 <a href="#journey" class="inline-flex items-center gap-4 group">
-                    <span class="w-12 h-px bg-heart transition-all group-hover:w-20" style="background-color: var(--heart)"></span>
                     <span class="text-xs uppercase tracking-[0.5em] text-heart font-bold" style="color: var(--heart)">The Journey Begins</span>
-                    <span class="w-12 h-px bg-heart transition-all group-hover:w-20" style="background-color: var(--heart)"></span>
                 </a>
             </div>
         </section>
 
-        <!-- Story Steps -->
         <section id="journey" class="py-32 px-6 bg-white overflow-hidden relative">
             <div class="max-w-6xl mx-auto text-center mb-24 reveal">
                 <h2 class="font-romantic text-6xl text-heart mb-6" style="color: var(--heart)">Steps of Our Journey</h2>
-                <p class="text-gray-400 font-elegant italic text-xl">The path we walked together, Pooja.</p>
             </div>
             
             <div class="branch-container">
@@ -345,8 +290,8 @@
                 
                 <div class="branch-node reveal">
                     <div class="branch-content">
-                        <div class="story-img-container mb-4">
-                            <img src="story1.jpeg" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600'">
+                        <div class="mb-4 overflow-hidden rounded-xl">
+                            <img src="story1.jpeg" class="w-full" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=800'">
                         </div>
                         <h3 class="font-romantic text-3xl text-heart mb-3" style="color: var(--heart)">Trust On Shoulder</h3>
                         <p class="text-gray-600 leading-relaxed italic">"The day we first met. I remember exactly how beautiful you looked, Pooja."</p>
@@ -355,8 +300,8 @@
 
                 <div class="branch-node reveal">
                     <div class="branch-content">
-                        <div class="story-img-container mb-4">
-                            <img src="story2.jpeg" onerror="this.src='https://images.unsplash.com/photo-1522673607200-1648835ecd1c?q=80&w=600'">
+                        <div class="mb-4 overflow-hidden rounded-xl">
+                            <img src="story2.jpeg" class="w-full" onerror="this.src='https://images.unsplash.com/photo-1522673607200-1648835ecd1c?q=80&w=800'">
                         </div>
                         <h3 class="font-romantic text-3xl text-heart mb-3" style="color: var(--heart)">Movie Night</h3>
                         <p class="text-gray-600 leading-relaxed italic">"Every late-night talk where I called you My Chakli made the roots go deeper."</p>
@@ -364,134 +309,63 @@
                 </div>
 
                 <div class="branch-node reveal">
-                    <div class="branch-content border-l-4 border-red-200">
-                        <div class="story-img-container mb-4">
-                            <img src="story3.jpeg" onerror="this.src='https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=600'">
+                    <div class="branch-content">
+                        <div class="mb-4 overflow-hidden rounded-xl">
+                            <img src="story3.jpeg" class="w-full" onerror="this.src='https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800'">
                         </div>
-                        <h3 class="font-romantic text-3xl text-red-400 mb-3">Shopping Glimpses</h3>
-                        <p class="text-gray-600 leading-relaxed italic">"Choosing things together, laughing over silly choices... those small moments were the biggest ones."</p>
+                        <h3 class="font-romantic text-3xl text-heart mb-3" style="color: var(--heart)">Shopping Glimpses</h3>
+                        <p class="text-gray-600 leading-relaxed italic">"Choosing things together... those small moments were the biggest ones."</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Gallery -->
         <section id="gallery" class="py-32 px-6 bg-pink-50/30">
             <div class="max-w-6xl mx-auto text-center mb-16 reveal">
                 <h2 class="font-romantic text-6xl text-heart mb-6" style="color: var(--heart)">Our Shared World</h2>
             </div>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto reveal">
                 <div class="polaroid -rotate-3" onclick="openLightbox(this.querySelector('img').src)">
-                    <div class="polaroid-img-container">
-                        <img src="gallery1.jpeg" onerror="this.src='https://images.unsplash.com/photo-1516589174184-c684ee393e00?q=80&w=400'">
-                    </div>
+                    <img src="gallery1.jpeg" onerror="this.src='https://images.unsplash.com/photo-1516589174184-c684ee393e00?q=80&w=400'">
                     <p class="font-romantic text-center mt-4 text-gray-400">The Pooja Smile</p>
                 </div>
                 <div class="polaroid rotate-2" onclick="openLightbox(this.querySelector('img').src)">
-                    <div class="polaroid-img-container">
-                        <img src="gallery2.jpeg" onerror="this.src='https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=400'">
-                    </div>
+                    <img src="gallery2.jpeg" onerror="this.src='https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=400'">
                     <p class="font-romantic text-center mt-4 text-gray-400">Chakli & Coffee</p>
                 </div>
                 <div class="polaroid -rotate-1" onclick="openLightbox(this.querySelector('img').src)">
-                    <div class="polaroid-img-container">
-                        <img src="gallery3.jpeg" onerror="this.src='https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?q=80&w=400'">
-                    </div>
+                    <img src="gallery3.jpeg" onerror="this.src='https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?q=80&w=400'">
                     <p class="font-romantic text-center mt-4 text-gray-400">Our Quiet Night</p>
                 </div>
                 <div class="polaroid rotate-6" onclick="openLightbox(this.querySelector('img').src)">
-                    <div class="polaroid-img-container">
-                        <img src="gallery4.jpeg" onerror="this.src='https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=400'">
-                    </div>
+                    <img src="gallery4.jpeg" onerror="this.src='https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=400'">
                     <p class="font-romantic text-center mt-4 text-gray-400">Always You</p>
                 </div>
             </div>
         </section>
 
-        <!-- The Final Question Section -->
         <section id="question-section" onmousemove="handleProximity(event)" class="py-40 px-6 bg-white text-center min-h-[700px] flex flex-col justify-center items-center overflow-hidden relative">
             <div class="max-w-4xl mx-auto reveal w-full" id="question-box">
                 <h2 class="font-romantic text-6xl text-heart mb-12" style="color: var(--heart)">Do you love your vandru, Pooja?</h2>
                 <div id="btn-container" class="flex flex-col md:flex-row justify-center items-center gap-12 mt-12 relative h-40 w-full">
-                    <button id="btn-yes" onclick="revealSurprise()" 
-                        class="px-14 py-4 bg-green-400 text-white rounded-full font-bold uppercase tracking-widest hover:scale-110 transition shadow-lg z-10">
-                        Yes
-                    </button>
-                    <button id="btn-no" 
-                        class="px-14 py-4 bg-gray-300 text-gray-600 rounded-full font-bold uppercase tracking-widest shadow-lg">
-                        No
-                    </button>
+                    <button id="btn-yes" onclick="revealSurprise()" class="px-14 py-4 bg-green-400 text-white rounded-full font-bold uppercase tracking-widest hover:scale-110 transition shadow-lg z-10">Yes</button>
+                    <button id="btn-no" class="px-14 py-4 bg-gray-300 text-gray-600 rounded-full font-bold uppercase tracking-widest shadow-lg">No</button>
                 </div>
             </div>
 
-            <!-- Hidden Surprise Landing Area -->
             <div id="final-surprise" class="w-full">
                 <div class="max-w-4xl mx-auto px-6">
-                    <div class="text-heart text-7xl mb-6 animate-pulse" style="color: var(--heart)">❤❤❤</div>
                     <h3 class="font-romantic text-7xl text-heart mb-8" style="color: var(--heart)">I knew it, Pooja!</h3>
-                    <p class="font-elegant text-2xl italic text-gray-500 mb-16 max-w-2xl mx-auto leading-relaxed">
-                        "In all the world, there is no heart for me like yours, My Chakli. In all the world, there is no love for you like mine."
-                    </p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-                        <div class="polaroid rotate-2">
-                            <div class="polaroid-img-container">
-                                <img src="gallery1.jpeg" onerror="this.src='https://images.unsplash.com/photo-1516589174184-c684ee393e00?auto=format&fit=crop&q=80&w=800'">
-                            </div>
-                            <p class="font-romantic text-center mt-4 text-gray-400">Pooja Forever</p>
-                        </div>
-                        <div class="polaroid -rotate-3 translate-y-4">
-                            <div class="polaroid-img-container">
-                                <img src="story1.jpeg" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&q=80&w=800'">
-                            </div>
-                            <p class="font-romantic text-center mt-4 text-gray-400">My Chakli</p>
-                        </div>
-                        <div class="polaroid rotate-6">
-                            <div class="polaroid-img-container">
-                                <img src="gallery3.jpeg" onerror="this.src='https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&q=80&w=800'">
-                            </div>
-                            <p class="font-romantic text-center mt-4 text-gray-400">Missing Us</p>
-                        </div>
+                    <div class="font-elegant text-xl text-gray-400 tracking-widest uppercase mb-6">Lets connect to your handsome</div>
+                    <div class="flex gap-4 justify-center mb-16">
+                        <a href="https://www.instagram.com/your_instagram_id" target="_blank" class="px-6 py-3 bg-gradient-to-r from-purple-400 to-pink-400 text-white rounded-full font-medium shadow-md">Instagram</a>
+                        <a href="https://wa.me/your_phone_number" target="_blank" class="px-6 py-3 bg-green-400 text-white rounded-full font-medium shadow-md">WhatsApp</a>
                     </div>
-
-                    <div class="p-12 bg-white rounded-[50px] shadow-2xl border border-heart/10 italic text-gray-600 text-2xl font-elegant leading-loose relative mb-16">
-                        <span class="absolute top-4 left-6 text-6xl text-heart opacity-20" style="color: var(--heart)">“</span>
-                        Every second spent away from you, Pooja, is a second I'm waiting to come back home to your heart. You are my home, my peace, and my everything.
-                        <span class="absolute bottom-4 right-6 text-6xl text-heart opacity-20" style="color: var(--heart)">”</span>
-                    </div>
-
-                    <!-- Contact/Signature Section -->
-                    <div class="flex flex-col items-center gap-8 mb-20">
-                        <div class="font-elegant text-xl text-gray-400 tracking-widest uppercase mb-2">
-                            Lets connect to your handsome
-                        </div>
-                        <div class="flex gap-4">
-                            <!-- Instagram Button -->
-                            <a href="https://www.instagram.com/your_instagram_id" target="_blank" class="contact-btn flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-400 to-pink-400 text-white rounded-full font-medium shadow-md">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                                Instagram
-                            </a>
-                            <!-- WhatsApp Button -->
-                            <a href="https://wa.me/your_phone_number" target="_blank" class="contact-btn flex items-center justify-center gap-2 px-6 py-3 bg-green-400 text-white rounded-full font-medium shadow-md">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                                WhatsApp
-                            </a>
-                        </div>
-                        <div class="font-romantic text-6xl text-heart mt-4" style="color: var(--heart)">
-                            Always Your Vandru
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
-
-        <footer class="py-20 text-center bg-white border-t border-gray-100">
-            <p class="text-gray-300 text-xs uppercase tracking-[0.8em] mb-4">Forever Yours, Pooja</p>
-        </footer>
     </div>
 
-    <!-- Lightbox -->
     <div id="lightbox" class="fixed inset-0 bg-black/95 z-[1000] hidden justify-center items-center p-6 cursor-pointer" onclick="closeLightbox()">
         <img id="lightbox-img" src="" class="max-w-full max-h-[90vh] rounded-xl shadow-2xl object-contain">
     </div>
@@ -503,113 +377,51 @@
         function checkAccess() {
             const input = document.getElementById('nickname-input');
             const entered = input.value.trim().toUpperCase();
-            const gate = document.getElementById('access-gate');
-            const main = document.getElementById('main-content');
-            const error = document.getElementById('error-msg');
-
             if (NICKNAMES.includes(entered)) {
-                gate.classList.add('fade-out');
+                document.getElementById('access-gate').classList.add('fade-out');
                 setTimeout(() => {
-                    gate.style.display = 'none';
-                    main.classList.remove('hidden-site');
+                    document.getElementById('access-gate').style.display = 'none';
+                    document.getElementById('main-content').classList.remove('hidden-site');
                     initReveal();
                     initCounter();
                     setInterval(spawnHeart, 600);
                 }, 1800);
             } else {
-                error.style.opacity = '1';
-                input.style.borderColor = '#f87171';
-                setTimeout(() => error.style.opacity = '0', 3000);
+                document.getElementById('error-msg').style.opacity = '1';
+                setTimeout(() => document.getElementById('error-msg').style.opacity = '0', 3000);
             }
         }
 
         function initCounter() {
-            const now = new Date();
-            const diffTime = Math.abs(now - START_DATE);
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            const countEl = document.getElementById('days-count');
-            let current = 0;
-            const step = Math.ceil(diffDays / 100) || 1;
-            const timer = setInterval(() => {
-                current += step;
-                if (current >= diffDays) {
-                    countEl.innerText = diffDays;
-                    clearInterval(timer);
-                } else {
-                    countEl.innerText = current;
-                }
-            }, 20);
+            const diffDays = Math.ceil(Math.abs(new Date() - START_DATE) / (1000 * 60 * 60 * 24));
+            document.getElementById('days-count').innerText = diffDays;
         }
 
         function handleProximity(e) {
             const btn = document.getElementById('btn-no');
-            if (!btn || btn.classList.contains('hidden')) return;
-
+            if (!btn) return;
             const rect = btn.getBoundingClientRect();
-            const btnCenterX = rect.left + rect.width / 2;
-            const btnCenterY = rect.top + rect.height / 2;
-
-            const deltaX = e.clientX - btnCenterX;
-            const deltaY = e.clientY - btnCenterY;
-            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-            const threshold = 120; 
-
-            if (distance < threshold) {
-                moveNoButton();
+            const distance = Math.sqrt(Math.pow(e.clientX - (rect.left + rect.width/2), 2) + Math.pow(e.clientY - (rect.top + rect.height/2), 2));
+            if (distance < 120) {
+                btn.style.transform = `translate(${(Math.random()*400)-200}px, ${(Math.random()*400)-200}px)`;
             }
         }
 
-        function moveNoButton() {
-            const btn = document.getElementById('btn-no');
-            const container = document.getElementById('question-section');
-            const containerRect = container.getBoundingClientRect();
-
-            const padding = 100;
-            const maxX = containerRect.width - padding * 2;
-            const maxY = containerRect.height - padding * 2;
-
-            const newX = (Math.random() * maxX) - (maxX / 2);
-            const newY = (Math.random() * maxY) - (maxY / 2);
-
-            btn.style.transform = `translate(${newX}px, ${newY}px)`;
-        }
-
         function revealSurprise() {
-            const questionBox = document.getElementById('question-box');
-            const surprise = document.getElementById('final-surprise');
-            const section = document.getElementById('question-section');
-            const audio = document.getElementById('romantic-music');
-            
-            audio.play().catch(e => console.log("Music interaction required"));
-
-            questionBox.style.transition = 'opacity 0.8s';
-            questionBox.style.opacity = '0';
-            
-            setTimeout(() => {
-                questionBox.style.display = 'none';
-                surprise.style.display = 'block';
-                section.style.minHeight = '100vh';
-                setTimeout(() => {
-                    surprise.style.opacity = '1';
-                    surprise.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    for(let i=0; i<30; i++) setTimeout(spawnHeart, i*100);
-                }, 100);
-            }, 800);
+            document.getElementById('question-box').style.display = 'none';
+            document.getElementById('final-surprise').style.display = 'block';
+            setTimeout(() => document.getElementById('final-surprise').style.opacity = '1', 100);
+            document.getElementById('romantic-music').play();
         }
 
         function initReveal() {
-            const reveals = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('visible');
-                });
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
             }, { threshold: 0.1 });
-            reveals.forEach(el => observer.observe(el));
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
 
         function createCursorHeart(e) {
-            if (document.getElementById('main-content').classList.contains('hidden-site')) return;
             const heart = document.createElement('div');
             heart.className = 'cursor-heart';
             heart.innerHTML = '❤';
@@ -620,15 +432,11 @@
         }
 
         function spawnHeart() {
-            const container = document.getElementById('heart-container');
-            if (!container) return;
             const heart = document.createElement('div');
             heart.className = 'heart-float';
             heart.innerHTML = '❤';
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
-            heart.style.animationDuration = (Math.random() * 5 + 8) + 's';
-            container.appendChild(heart);
+            document.getElementById('heart-container').appendChild(heart);
             setTimeout(() => heart.remove(), 10000);
         }
 
@@ -640,12 +448,6 @@
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
         }
-
-        document.getElementById('nickname-input').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                checkAccess();
-            }
-        });
     </script>
 </body>
 </html>
